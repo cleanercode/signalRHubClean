@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Fire Incidents";
+}
+
+<div class="jumbotron">
+    <h1>Fire Incidents</h1>
+    <p>Watch fire incidents in real time</p>
+    <div class="row">        
+        <div class="col-md-4">
+            <p><label for="location">Location</label>
+            <input type="text" id="location" value="Town Hall" /></p>
+            <p><input type="button" id="report" value="Simulate Fire Incident" /></p>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <ul style="list-style-type:none;" id="fires"></ul>
+</div>
+
+@section scripts {
+    <script src="~/Scripts/jquery.signalR-2.2.0.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script>
+        $(function () {
+            var hub = $.connection.fireIncidentHub;
+
+            hub.client.notify = function (fireIncident) {
+                $('#fires').prepend('<li class="alert-danger" style="margin-bottom: 5px;"> Fire broke out in ' + fireIncident.location + ' at ' + new Date(fireIncident.start).toLocaleString() + '</li>');
+            };
+
+            $.connection.hub.start({}).done(function () {
+                $('#report').click(function () {
+                    var fireIncident = { location: $('#location').val(), start: new Date().toGMTString() };
+                    $.post('../api/fireIncidents/', fireIncident);
+                });
+            });
+        });
+    </script>
+}
