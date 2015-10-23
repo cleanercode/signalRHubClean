@@ -13,6 +13,7 @@ namespace davidhartmanninfo.FireIncidentRealtime.App_Start
     using davidhartmanninfo.FireIncidentRealtime.ServiceBus;
     using System.Web.Http;
     using Microsoft.AspNet.SignalR;
+    using Respository;
 
     public static class NinjectWebCommon 
     {
@@ -69,6 +70,7 @@ namespace davidhartmanninfo.FireIncidentRealtime.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<FireIncidentNotify>().To<FireIncidentNotify>().InSingletonScope();
+            kernel.Bind<FireIncidentRepository>().To<FireIncidentRepository>().InSingletonScope();
         }        
     }
 }

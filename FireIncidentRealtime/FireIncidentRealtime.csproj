@@ -197,6 +197,7 @@
     <Compile Include="Hubs\IFireIncidentHubClient.cs" />
     <Compile Include="Models\FireIncident.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Respository\FireIncidentRepository.cs" />
     <Compile Include="ServiceBus\FireIncidentNotify.cs" />
   </ItemGroup>
   <ItemGroup>
