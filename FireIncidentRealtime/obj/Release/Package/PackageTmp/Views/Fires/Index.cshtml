@@ -25,14 +25,24 @@
         $(function () {
             var hub = $.connection.fireIncidentHub;
 
-            hub.client.notify = function (fireIncident) {
+            var prependIncident = function (fireIncident) {
                 $('#fires').prepend('<li class="alert-danger" style="margin-bottom: 5px;"> Fire broke out in ' + fireIncident.location + ' at ' + new Date(fireIncident.start).toLocaleString() + '</li>');
+            };
+
+            hub.client.notify = function (fireIncident) {
+                prependIncident(fireIncident);
             };
 
             $.connection.hub.start({}).done(function () {
                 $('#report').click(function () {
                     var fireIncident = { location: $('#location').val(), start: new Date().toGMTString() };
                     $.post('../api/fireIncidents/', fireIncident);
+                });
+
+                $.getJSON('../api/fireIncidents/', function (data) {
+                    $.each(data, function (i, fireIncident) {
+                        prependIncident(fireIncident);
+                    });
                 });
             });
         });
