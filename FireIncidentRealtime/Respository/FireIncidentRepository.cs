@@ -18,7 +18,12 @@ namespace davidhartmanninfo.FireIncidentRealtime.Respository
 
         public FireIncidentRepository()
         {
-            FireIncidents = new List<FireIncident>();
+            var fireIncidents  = new List<FireIncident>();
+            FireIncidents = fireIncidents;
+            //seeds
+            fireIncidents.Add(new FireIncident { Location = "Town Hall", Start = DateTime.Now });
+            fireIncidents.Add(new FireIncident { Location = "Hill Valley", Start = DateTime.Now.AddSeconds(-45) });
+            fireIncidents.Add(new FireIncident { Location = "Library", Start = DateTime.Now.AddSeconds(-102) });
         }
 
         /// <summary>

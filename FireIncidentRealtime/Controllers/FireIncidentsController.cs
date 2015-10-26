@@ -36,7 +36,7 @@ namespace davidhartmanninfo.FireIncidentRealtime.Controllers
         /// <returns></returns>
         public IHttpActionResult Get()
         {
-            return Ok(Repository.FireIncidents);
+            return Ok(Repository.FireIncidents.OrderBy(i => i.Start));
         }
 
         /// <summary>

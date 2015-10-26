@@ -104,3 +104,4 @@ C:\Users\david_000\Documents\signalRHubClean\FireIncidentRealtime\bin\System.Web
 C:\Users\david_000\Documents\signalRHubClean\FireIncidentRealtime\bin\Antlr3.Runtime.pdb
 C:\Users\david_000\Documents\signalRHubClean\FireIncidentRealtime\obj\Release\FireIncidentRealtime.dll
 C:\Users\david_000\Documents\signalRHubClean\FireIncidentRealtime\obj\Release\FireIncidentRealtime.pdb
+C:\Users\david_000\Documents\signalRHubClean\FireIncidentRealtime\obj\Release\FireIncidentRealtime.csprojResolveAssemblyReference.cache
